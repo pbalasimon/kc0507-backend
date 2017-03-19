@@ -13,7 +13,7 @@
                 <div class="media-body">
                     <span class="article-author"><a
                             href="{%url 'blog_detail' post.blog.user %}">{{post.blog.user}}</a></span>
-                    <time class="article-datetime">{{post.published_date}}</time>
+                    <time class="article-datetime">{{post.created_date}}</time>
                 </div>
             </div>
         </div>
@@ -30,10 +30,18 @@
                  alt="Imagen artículo">
         </div>
     </div>
+    {% if post.url_video %}
+    <div class="col">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item"
+                    src="{{post.url_video}}" allowfullscreen></iframe>
+        </div>
+    </div>
+    {% endif %}
 
     <div class="row">
         <div class="col">
-            {{post.body}}
+            {{post.text}}
         </div>
     </div>
 </article>

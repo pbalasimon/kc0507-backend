@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views import View
 
@@ -10,7 +9,7 @@ from blogs.models import Post, Blog
 
 
 def home(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    posts = Post.objects.filter().order_by('-published_date')
 
     context = {
         'posts': posts
