@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
+from blogs.api import BlogsAPI, BlogPostsAPI, PostsAPI, PostActionsAPI
 from blogs.views import home, blogs_list, blog_detail, post_detail, NewPostView
 from users.api import UsersAPI
 from users.views import LoginView, logout
@@ -34,6 +35,10 @@ urlpatterns = [
     url(r'^login$', LoginView.as_view(), name="login"),
     url(r'^logout$', logout, name="logout"),
 
-    # API users, posts y blogs
+    # API
     url(r'^api/1.0/', include(router.urls)),
+    url(r'^api/1.0/blogs/$', BlogsAPI.as_view(), name='blogs_api'),
+    url(r'^api/1.0/blogs/(?P<pk>[0-9]+)/$', BlogPostsAPI.as_view(), name='blogs_post_api'),
+    url(r'^api/1.0/posts/$', PostsAPI.as_view(), name='posts_api'),
+    url(r'^api/1.0/posts/(?P<pk>[0-9]+)/$', PostActionsAPI.as_view(), name='post_actions_api')
 ]
