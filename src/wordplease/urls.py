@@ -16,6 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from blogs.views import home, blogs_list, blog_detail, post_detail, NewPostView
+from users.views import LoginView, logout
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', home, name="home"),
+    url(r'^blogs/$', blogs_list, name="blogs_list"),
+    url(r'^blogs/(?P<username>[a-zA-Z0-9_]+)/?$', blog_detail, name='blog_detail'),
+    url(r'^blogs/(?P<username>[a-zA-Z0-9_]+)/(?P<post_id>[0-9]+)/?$', post_detail, name='post_detail'),
+    url(r'^new-post$', NewPostView.as_view(), name="post_new"),
+    url(r'^login$', LoginView.as_view(), name="login"),
+    url(r'^logout$', logout, name="logout"),
 ]

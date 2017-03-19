@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    <div class="form-group {% if form.title.errors %} has-danger{% endif %}">
+        <label for="title">Título</label>
+        {{form.title}}
+        <div class="form-control-feedback">{{ form.title.errors.as_text }}</div>
+    </div>
+
+    <div class="form-group {% if nform.summary.errors %} has-danger{% endif %}">
+        <label for="summary">Introducción</label>
+        {{form.summary}}
+        <div class="form-control-feedback">{{ form.summary.errors.as_text }}</div>
+    </div>
+
+    <div class="form-group {% if form.body.errors %} has-danger{% endif %}">
+        <label for="text">Cuerpo del post</label>
+        {{form.body}}
+        <div class="form-control-feedback">{{ form.body.errors.as_text }}</div>
+    </div>
+
+    <div class="form-group {% if form.url_image.errors %} has-danger{% endif %}">
+        <label for="url_image">URL Imagen</label>
+        {{form.url_image}}
+        <div class="form-control-feedback">{{ form.url_image.errors.as_text }}</div>
+    </div>
+
+    <div class="form-group {% if form.url_video.errors %} has-danger{% endif %}">
+        <label for="url_video">URL Video</label>
+        {{form.url_video}}
+        <div class="form-control-feedback">{{ form.url_video.errors.as_text }}</div>
+    </div>
+
+    <div class="form-group {% if form.published_date.errors %} has-danger{% endif %}">
+        <label for="published_date">Fecha y hora de publicación</label>
+        {{form.published_date}}
+        <div class="form-control-feedback">{{ form.published_date.errors.as_text }}</div>
+    </div>
+
+    <div class="form-group {% if form.categories.errors %} has-danger{% endif %}">
+        <label for="categories">Categorias</label>
+        {{form.categories}}
+        <div class="form-control-feedback">{{ form.categories.errors.as_text }}</div>
+    </div>
+
+    <button class="btn btn-primary">Crear post</button>
+</form>
+
+{% endblock %}

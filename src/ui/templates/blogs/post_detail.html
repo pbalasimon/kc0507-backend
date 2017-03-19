@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} {{ post.blog.title }} :: {{post.title}} {% endblock %}
+{% block blog_title %} {{ post.blog.title }} {% endblock %}
+{% block blog_url %} {%url 'blog_detail' post.blog.user %} {% endblock %}
+{% block wordplease_url%} <a href="{% url 'home' %}"> Volver a wordplease </a> {% endblock %}
+
+{%block content%}
+<article class="article">
+    <div class="row">
+        <div class="col">
+            <div class="media">
+                <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                <div class="media-body">
+                    <span class="article-author"><a
+                            href="{%url 'blog_detail' post.blog.user %}">{{post.blog.user}}</a></span>
+                    <time class="article-datetime">{{post.published_date}}</time>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3><a class="article-title" href="{%url 'post_detail' post.blog.user post.pk%}">{{post.title}}</a></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img class="article-image"
+                 src="{{post.url_image}}"
+                 alt="Imagen artículo">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{post.body}}
+        </div>
+    </div>
+</article>
+
+{%endblock%}

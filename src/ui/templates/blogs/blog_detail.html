@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} {{ blog.title }} {% endblock %}
+{% block blog_title %} {{ blog.title }} {% endblock %}
+{% block blog_url %} {%url 'blog_detail' blog.user %} {% endblock %}
+{% block wordplease_url%} <a href="{% url 'home' %}"> Volver a wordplease </a> {% endblock %}
+
+{% block content %}
+{{blog.post}}
+{% for post in blog.posts.all %}
+<section id="articles">
+    {% include "blogs/post_body.html" %}
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if error%}
+<div class="alert alert-danger" role="alert">
+    {{error}}
+</div>
+{% endif %}
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    <div class="form-group {% if form.username.errors %} has-danger{% endif %}">
+        <label for="username">Usuario</label>
+        <input type="text" class="form-control" id="username" maxlength="20" name="username">
+        <div class="form-control-feedback">{{ form.username.errors.as_text }}</div>
+    </div>
+    <div class="form-group {% if form.password.errors %} has-danger{% endif %}">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+        <div class="form-control-feedback">{{ form.password.errors.as_text }}</div>
+    </div>
+    <button class="btn btn-primary">Acceder</button>
+</form>
+
+{% endblock %}

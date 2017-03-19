@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for post in posts %}
+<section id="articles">
+    {% include "blogs/post_body.html" %}
+</section>
+{% endfor %}
+{% endblock %}
