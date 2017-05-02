@@ -20,7 +20,7 @@ from rest_framework.routers import DefaultRouter
 from blogs.api import BlogsAPI, BlogPostsAPI, PostsAPI, PostActionsAPI
 from blogs.views import home, blogs_list, blog_detail, post_detail, NewPostView
 from users.api import UsersAPI
-from users.views import LoginView, logout
+from users.views import LoginView, logout, SignupView
 
 router = DefaultRouter()
 router.register("users", UsersAPI, base_name="users_api")
@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^blogs/(?P<username>[a-zA-Z0-9_]+)/(?P<post_id>[0-9]+)/?$', post_detail, name='post_detail'),
     url(r'^new-post$', NewPostView.as_view(), name="post_new"),
     url(r'^login$', LoginView.as_view(), name="login"),
+    url(r'^signup$', SignupView.as_view(), name="signup"),
     url(r'^logout$', logout, name="logout"),
 
     # API

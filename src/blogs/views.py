@@ -29,7 +29,7 @@ def blogs_list(request):
 def blog_detail(request, username):
     try:
         user = User.objects.get(username=username)
-        blog = Blog.objects.get(pk=user.pk)
+        blog = Blog.objects.get(user_id=user.pk)
     except Blog.DoesNotExist:
         return render(request, '404.html', {}, status=404)
     except Blog.MultipleObjectsReturned:
