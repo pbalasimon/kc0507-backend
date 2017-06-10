@@ -26,7 +26,7 @@ class LoginView(View):
                 django_login(request, user)
                 return redirect('home')
             else:
-                context["error"] = "Usuario o contraseña no válidos"
+                context["error"] = _("login.post.error")
         context["form"] = form
         return render(request, 'login.html', context)
 
@@ -64,7 +64,7 @@ class SignupView(View):
                 django_login(request, new_user)
                 return redirect('home')
             else:
-                context['error'] = "Error creando usuario"
+                context['error'] = _("signup.post.error")
 
         context['form'] = form
         return render(request, 'signup.html', context)

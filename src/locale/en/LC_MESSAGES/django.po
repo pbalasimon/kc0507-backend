@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-10 11:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: blogs/forms.py:14
+msgid "blogs.forms.title.placeholder"
+msgstr "Title"
+
+#: blogs/forms.py:16
+msgid "blogs.forms.summary.placeholder"
+msgstr "Summary"
+
+#: blogs/forms.py:20
+msgid "blogs.forms.url_image.placeholder"
+msgstr "URL image"
+
+#: blogs/forms.py:22
+msgid "blogs.forms.url_video.placeholder"
+msgstr "URL video"
+
+#: blogs/forms.py:29
+msgid "blogs.forms.title.required"
+msgstr "The title is required"
+
+#: blogs/forms.py:32
+msgid "blogs.forms.summary.required"
+msgstr "The summary is mandatory"
+
+#: blogs/forms.py:35
+msgid "blogs.forms.body.required"
+msgstr "The body of the post is mandatory"
+
+#: blogs/forms.py:38
+msgid "blogs.forms.url_image.required"
+msgstr "The url image is mandatory"
+
+#: blogs/forms.py:41
+msgid "blogs.forms.published_date.required"
+msgstr "The published date is mandatory"
+
+#: blogs/views.py:88
+msgid "blogs.views.error_create_post"
+msgstr "An error occurred to save the message. Review the data and try again"
+
+#: ui/templates/404.html:2
+msgid "404.error_text"
+msgstr "Page not found"
+
+#: ui/templates/500.html:2
+msgid "500.error_text"
+msgstr "Internal Server Error"
+
+#: ui/templates/base.html:8
+msgid "meta_description"
+msgstr "Exercise of Python, Django y REST"
+
+#: ui/templates/base.html:10 ui/templates/base.html:17
+msgid "Wordplease"
+msgstr "Wordplease"
+
+#: ui/templates/base.html:23
+msgid "Ingresar"
+msgstr "Login"
+
+#: ui/templates/base.html:25
+msgid "Registrarse"
+msgstr "Sign up"
+
+#: ui/templates/base.html:27
+msgid "Escribir post"
+msgstr "Write post"
+
+#: ui/templates/base.html:52
+msgid "title_footer"
+msgstr "Click to go back to the top of the page"
+
+#: ui/templates/base.html:56
+msgid "footer"
+msgstr ""
+"Exercise of Python, Django y REST &copy; Pedro Bala Simón · Student II Web "
+"Development Master Bootcamp"
+
+#: ui/templates/blogs/blog_detail.html:6 ui/templates/blogs/post_detail.html:7
+msgid "blog_detail.return"
+msgstr "Return wordplease"
+
+#: ui/templates/blogs/post_body.html:35
+msgid "post_body.read_more"
+msgstr "Read more..."
+
+#: ui/templates/blogs/post_new.html:8
+msgid "post_new.title"
+msgstr "Title"
+
+#: ui/templates/blogs/post_new.html:14
+msgid "post_new.summary"
+msgstr "Summary"
+
+#: ui/templates/blogs/post_new.html:20
+msgid "post_new.body"
+msgstr "Body of the post"
+
+#: ui/templates/blogs/post_new.html:26
+msgid "post_new.url_image"
+msgstr "URL image"
+
+#: ui/templates/blogs/post_new.html:32
+msgid "post_new.url_video"
+msgstr "URL video"
+
+#: ui/templates/blogs/post_new.html:38
+msgid "post_new.published_date"
+msgstr "Date and time of publication"
+
+#: ui/templates/blogs/post_new.html:44
+msgid "post_new.categories"
+msgstr "Categories"
+
+#: ui/templates/blogs/post_new.html:49
+msgid "post_new.button"
+msgstr "Create post"
+
+#: ui/templates/login.html:17
+msgid "login.user.label"
+msgstr "User"
+
+#: ui/templates/login.html:22
+msgid "login.pass.label"
+msgstr "Password"
+
+#: ui/templates/login.html:26
+msgid "login.acceder.button"
+msgstr "Enter"
+
+#: ui/templates/signup.html:16
+msgid "signup.username.label"
+msgstr "Username"
+
+#: ui/templates/signup.html:21
+msgid "signup.name.label"
+msgstr "User"
+
+#: ui/templates/signup.html:26
+msgid "signup.lastname.label"
+msgstr "Lastname"
+
+#: ui/templates/signup.html:31
+msgid "signup.email.label"
+msgstr "Email"
+
+#: ui/templates/signup.html:36
+msgid "signup.password.label"
+msgstr "Password"
+
+#: ui/templates/signup.html:41
+msgid "signup.repeat_password.label"
+msgstr "Repeat password"
+
+#: ui/templates/signup.html:45
+msgid "signup.register.button"
+msgstr "Enter"
+
+#: users/forms.py:24
+msgid "forms.password.not_equals"
+msgstr "The password fields must be the same"
+
+#: users/forms.py:30
+msgid "forms.username.exists"
+msgstr "Username already exists"
+
+#: users/forms.py:36
+msgid "forms.email.exists"
+msgstr "Email already exists"
+
+#: users/serializers.py:31
+msgid "users.serializers.validate.username_exists"
+msgstr "Username already exists"
+
+#: users/serializers.py:35
+msgid "users.serializers.validate.user_exists"
+msgstr "User already exists"
+
+#: users/views.py:29
+msgid "login.post.error"
+msgstr "User o password invalid"
+
+#: users/views.py:67
+msgid "signup.post.error"
+msgstr "Error creating post"

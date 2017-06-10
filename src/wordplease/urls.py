@@ -19,6 +19,7 @@ from rest_framework.routers import DefaultRouter
 
 from blogs.api import BlogsAPI, BlogPostsAPI, PostsAPI, PostActionsAPI
 from blogs.views import home, blogs_list, blog_detail, post_detail, NewPostView
+from ui.views import ChangeLanguage
 from users.api import UsersAPI
 from users.views import LoginView, logout, SignupView
 
@@ -41,5 +42,8 @@ urlpatterns = [
     url(r'^api/1.0/blogs/$', BlogsAPI.as_view(), name='blogs_api'),
     url(r'^api/1.0/blogs/(?P<pk>[0-9]+)/$', BlogPostsAPI.as_view(), name='blogs_post_api'),
     url(r'^api/1.0/posts/$', PostsAPI.as_view(), name='posts_api'),
-    url(r'^api/1.0/posts/(?P<pk>[0-9]+)/$', PostActionsAPI.as_view(), name='post_actions_api')
+    url(r'^api/1.0/posts/(?P<pk>[0-9]+)/$', PostActionsAPI.as_view(), name='post_actions_api'),
+
+    # i18n
+    url(r'^change-language/(?P<language>.+)$', ChangeLanguage.as_view(), name="change-language"),
 ]

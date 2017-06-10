@@ -12031,7 +12031,7 @@ body {
     }
 }
 
-#primaryNav .container .navbar-text span,i {
+#primaryNav .container .navbar-text span, i {
     color: black;
 }
 
@@ -12126,4 +12126,22 @@ footer {
     color: #02b875;
     font-size: 0.8rem;
     text-align: center;
+}
+
+/*!
+ * Generated with CSS Flag Sprite generator (https://www.flag-sprites.com/)
+ */
+.flag {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url('../img/flags.png') no-repeat;
+}
+
+.flag.flag-es {
+    background-position: 0 -128px
+}
+
+.flag.flag-gb {
+    background-position: -256px -128px
 }

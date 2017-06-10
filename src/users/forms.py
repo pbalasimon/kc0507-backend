@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext as _
 
 
 class LoginForm(forms.Form):
@@ -20,17 +21,17 @@ class SignupForm(forms.Form):
         password = self.cleaned_data.get('password')
         repeat_password = self.cleaned_data.get('repeat_password')
         if password != repeat_password:
-            raise ValidationError('Los campos password, deben ser iguales')
+            raise ValidationError(_("forms.password.not_equals"))
         return self.cleaned_data
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
         if User.objects.filter(username=username).exists():
-            raise ValidationError('El nombre de usuario ya existe')
+            raise ValidationError(_("forms.username.exists"))
         return username
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
-            raise ValidationError('El email introducido ya existe')
+            raise ValidationError(_("forms.email.exists"))
         return email

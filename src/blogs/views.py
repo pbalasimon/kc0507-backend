@@ -6,6 +6,7 @@ from django.views import View
 
 from blogs.forms import PostForm
 from blogs.models import Post, Blog
+from django.utils.translation import gettext as _
 
 
 def home(request):
@@ -84,7 +85,7 @@ class NewPostView(View):
             }
             return render(request, 'blogs/post_detail.html', context)
         else:
-            message = "Se ha producido un error al guardar el post. Revise los datos y vuelva a intentarlo"
+            message = _("blogs.views.error_create_post")
             context = {
                 "post": post,
                 "form": form,

@@ -1,29 +1,30 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Práctica de Python, Django y REST">
+        <meta name="description" content='{% trans "meta_description" %}'>
         <meta name="author" content="Pedro Bala Simón">
-        <title>{% block title %} Wordplease {% endblock %}</title>
+        <title>{% block title %} {% trans "Wordplease" %} {% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
     </head>
     <body>
 
         <nav id="primaryNav" class="navbar fixed-top navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="{%block blog_url%} / {% endblock %}">{% block blog_title %} Wordplease
+                <a class="navbar-brand" href="{%block blog_url%} / {% endblock %}">{% block blog_title %} {% trans "Wordplease" %}
                     {% endblock %}</a>
                 <span class="navbar-text navbar-toggler-right">
                     <a href="{% url 'blogs_list' %}">Blogs</a> &nbsp;
                     {%block wordplease_url%}  {% endblock %}
                     {% if not user.is_authenticated %}
-						<a href="{% url 'login' %}">Ingresar</a>
+						<a href="{% url 'login' %}">{% trans "Ingresar" %}</a>
 						<span>/</span>
-						<a href="{% url 'signup' %}">Registrarse</a>
+						<a href="{% url 'signup' %}">{% trans "Registrarse" %}</a>
                     {% else %}
-						<a href="{% url 'post_new' %}">Escribir post</a>
+						<a href="{% url 'post_new' %}">{% trans "Escribir post" %}</a>
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 
                     <a href="#" data-toggle="popover"
@@ -48,12 +49,13 @@
         </main>
 
         <button id="back-to-top" type="button" class="btn btn-secondary" data-toggle="tooltip"
-                data-animation="false" data-placement="left" title="Haga clic para volver al principio de la página">
+                data-animation="false" data-placement="left" title='{% trans "title_footer" %}'>
             <i class="fa fa-arrow-up" aria-hidden="true"></i>
         </button>
 
-        <footer>Práctica de Python, Django y REST &copy; Pedro Bala Simón · Estudiante II Web Development Master
-            Bootcamp
+        <footer>{% trans "footer" %}
+            <a href='{% url "change-language" "es" %}'><img src="{% static 'img/blank.gif' %}" class="flag flag-es" alt="Español" /></a>
+            <a href='{% url "change-language" "en" %}'><img src="{% static 'img/blank.gif' %}" class="flag flag-gb" alt="Ingles" /></a>
         </footer>
 
         <script src="{% static 'js/main.js' %}"></script>

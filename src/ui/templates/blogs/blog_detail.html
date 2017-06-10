@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %} {{ blog.title }} {% endblock %}
 {% block blog_title %} {{ blog.title }} {% endblock %}
 {% block blog_url %} {%url 'blog_detail' blog.user %} {% endblock %}
-{% block wordplease_url%} <a href="{% url 'home' %}"> Volver a wordplease </a> {% endblock %}
+{% block wordplease_url%} <a href="{% url 'home' %}"> {% trans "blog_detail.return" %} </a> {% endblock %}
 
 {% block content %}
 {{blog.post}}

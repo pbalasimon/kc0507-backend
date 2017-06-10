@@ -2,6 +2,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
+from django.utils.translation import gettext as _
 
 
 class UserSerializer(serializers.Serializer):
@@ -27,10 +28,10 @@ class UserSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         if self.instance is None and User.objects.filter(username=attrs.get("username")).exists():
-            raise ValidationError("El nombre de usuario ya existe")
+            raise ValidationError(_("users.serializers.validate.username_exists"))
 
         if self.instance is not None and self.instance.username != attrs.get("username") and User.objects.filter(
                 username=attrs.get("username")).exists():
-            raise ValidationError("El nombre de usuario ya existe")
+            raise ValidationError(_("users.serializers.validate.user_exists"))
 
         return attrs

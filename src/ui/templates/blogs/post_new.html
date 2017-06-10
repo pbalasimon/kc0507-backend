@@ -1,52 +1,52 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block content %}
 
 <form method="post" novalidate>
     {% csrf_token %}
     <div class="form-group {% if form.title.errors %} has-danger{% endif %}">
-        <label for="title">Título</label>
+        <label for="title">{% trans "post_new.title" %}</label>
         {{form.title}}
         <div class="form-control-feedback">{{ form.title.errors.as_text }}</div>
     </div>
 
-    <div class="form-group {% if nform.summary.errors %} has-danger{% endif %}">
-        <label for="summary">Introducción</label>
+    <div class="form-group {% if form.summary.errors %} has-danger{% endif %}">
+        <label for="summary">{% trans "post_new.summary" %}</label>
         {{form.summary}}
         <div class="form-control-feedback">{{ form.summary.errors.as_text }}</div>
     </div>
 
     <div class="form-group {% if form.body.errors %} has-danger{% endif %}">
-        <label for="text">Cuerpo del post</label>
+        <label for="text">{% trans "post_new.body" %}</label>
         {{form.body}}
         <div class="form-control-feedback">{{ form.body.errors.as_text }}</div>
     </div>
 
     <div class="form-group {% if form.url_image.errors %} has-danger{% endif %}">
-        <label for="url_image">URL Imagen</label>
+        <label for="url_image">{% trans "post_new.url_image" %}</label>
         {{form.url_image}}
         <div class="form-control-feedback">{{ form.url_image.errors.as_text }}</div>
     </div>
 
     <div class="form-group {% if form.url_video.errors %} has-danger{% endif %}">
-        <label for="url_video">URL Video</label>
+        <label for="url_video">{% trans "post_new.url_video" %}</label>
         {{form.url_video}}
         <div class="form-control-feedback">{{ form.url_video.errors.as_text }}</div>
     </div>
 
     <div class="form-group {% if form.published_date.errors %} has-danger{% endif %}">
-        <label for="published_date">Fecha y hora de publicación</label>
+        <label for="published_date">{% trans "post_new.published_date" %}</label>
         {{form.published_date}}
         <div class="form-control-feedback">{{ form.published_date.errors.as_text }}</div>
     </div>
 
     <div class="form-group {% if form.categories.errors %} has-danger{% endif %}">
-        <label for="categories">Categorias</label>
+        <label for="categories">{% trans "post_new.categories" %}</label>
         {{form.categories}}
         <div class="form-control-feedback">{{ form.categories.errors.as_text }}</div>
     </div>
 
-    <button class="btn btn-primary">Crear post</button>
+    <button class="btn btn-primary">{% trans "post_new.button" %}</button>
 </form>
 
 {% endblock %}

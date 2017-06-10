@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block content %}
 
 
@@ -13,36 +13,36 @@
 <form method="post" novalidate>
     {% csrf_token %}
     <div class="form-group {% if form.username.errors %} has-danger{% endif %}">
-        <label for="username">Nombre de usuario</label>
+        <label for="username">{% trans "signup.username.label" %}</label>
         <input type="text" class="form-control" id="username" maxlength="20" name="username">
         <div class="form-control-feedback">{{ form.username.errors.as_text }}</div>
     </div>
     <div class="form-group {% if form.first_name.errors %} has-danger{% endif %}">
-        <label for="first_name">Nombre</label>
+        <label for="first_name">{% trans "signup.name.label" %}</label>
         <input type="text" class="form-control" id="first_name" maxlength="20" name="first_name">
         <div class="form-control-feedback">{{ form.first_name.errors.as_text }}</div>
     </div>
     <div class="form-group {% if form.last_name.errors %} has-danger{% endif %}">
-        <label for="last_name">Apellidos</label>
+        <label for="last_name">{% trans "signup.lastname.label" %}</label>
         <input type="text" class="form-control" id="last_name" name="last_name">
         <div class="form-control-feedback">{{ form.last_name.errors.as_text }}</div>
     </div>
     <div class="form-group {% if form.email.errors %} has-danger{% endif %}">
-        <label for="email">Email</label>
+        <label for="email">{% trans "signup.email.label" %}</label>
         <input type="email" class="form-control" id="email" name="email">
         <div class="form-control-feedback">{{ form.email.errors.as_text }}</div>
     </div>
     <div class="form-group {% if form.password.errors %} has-danger{% endif %}">
-        <label for="password">Password</label>
+        <label for="password">{% trans "signup.password.label" %}</label>
         <input type="password" class="form-control" id="password" name="password">
         <div class="form-control-feedback">{{ form.password.errors.as_text }}</div>
     </div>
     <div class="form-group {% if form.repeat_password.errors %} has-danger{% endif %}">
-        <label for="repeat_password">Repetir password</label>
+        <label for="repeat_password">{% trans "signup.repeat_password.label" %}</label>
         <input type="password" class="form-control" id="repeat_password" name="repeat_password">
         <div class="form-control-feedback">{{ form.repeat_password.errors.as_text }}</div>
     </div>
-    <button class="btn btn-primary">Acceder</button>
+    <button class="btn btn-primary">{% trans "signup.register.button" %}</button>
 </form>
 
 {% endblock %}

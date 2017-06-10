@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load l10n %}
+{% load i18n %}
 {% block title %} {{ post.blog.title }} :: {{post.title}} {% endblock %}
 {% block blog_title %} {{ post.blog.title }} {% endblock %}
 {% block blog_url %} {%url 'blog_detail' post.blog.user %} {% endblock %}
-{% block wordplease_url%} <a href="{% url 'home' %}"> Volver a wordplease </a> {% endblock %}
+{% block wordplease_url%} <a href="{% url 'home' %}"> {% trans "blog_detail.return" %} </a> {% endblock %}
 
 {%block content%}
 <article class="article">
@@ -13,7 +15,7 @@
                 <div class="media-body">
                     <span class="article-author"><a
                             href="{%url 'blog_detail' post.blog.user %}">{{post.blog.user}}</a></span>
-                    <time class="article-datetime">{{post.published_date}}</time>
+                    <time class="article-datetime">{{post.published_date|localize}}</time>
                 </div>
             </div>
         </div>
