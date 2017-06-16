@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views import View
-
+from django.utils.translation import gettext as _
 from blogs.models import Blog
 from users.forms import LoginForm, SignupForm
 

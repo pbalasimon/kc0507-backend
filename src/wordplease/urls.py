@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^blogs/(?P<username>[a-zA-Z0-9_]+)/?$', blog_detail, name='blog_detail'),
     url(r'^blogs/(?P<username>[a-zA-Z0-9_]+)/(?P<post_id>[0-9]+)/?$', post_detail, name='post_detail'),
     url(r'^new-post$', NewPostView.as_view(), name="post_new"),
+    url(r'^reply-post/(?P<pk>[0-9]+)/$', NewPostView.as_view(), name="reply_post"),
     url(r'^login$', LoginView.as_view(), name="login"),
     url(r'^signup$', SignupView.as_view(), name="signup"),
     url(r'^logout$', logout, name="logout"),

@@ -12145,3 +12145,8 @@ footer {
 .flag.flag-gb {
     background-position: -256px -128px
 }
+
+.response-article {
+    color: #02b875;
+    margin-bottom: 3px;
+}

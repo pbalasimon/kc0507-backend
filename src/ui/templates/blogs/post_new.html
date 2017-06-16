@@ -2,6 +2,10 @@
 {% load i18n %}
 {% block content %}
 
+{% if post.pk is not None %}
+    <span class="response-article">Contestando al artículo '{{post.title}}' de {{post.blog.user}}</span>
+{% endif %}
+
 <form method="post" novalidate>
     {% csrf_token %}
     <div class="form-group {% if form.title.errors %} has-danger{% endif %}">

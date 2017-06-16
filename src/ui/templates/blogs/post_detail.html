@@ -13,8 +13,17 @@
             <div class="media">
                 <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
                 <div class="media-body">
-                    <span class="article-author"><a
-                            href="{%url 'blog_detail' post.blog.user %}">{{post.blog.user}}</a></span>
+
+                    <div class="d-flex justify-content-end">
+                        <div class="mr-auto">
+                            <span class="article-author"><a
+                                    href="{%url 'blog_detail' post.blog.user %}">{{post.blog.user}}</a></span>
+                        </div>
+                        {% if user.pk is not post.blog.user.pk %}
+                        <div class=""><a
+                                href="{%url 'reply_post' post.pk %}">{% trans "blog.response" %}</a></div>
+                        {% endif %}
+                    </div>
                     <time class="article-datetime">{{post.published_date|localize}}</time>
                 </div>
             </div>

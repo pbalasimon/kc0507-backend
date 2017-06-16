@@ -1,12 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
+from django.utils.translation import gettext as _
 from django.views import View
 
 from blogs.forms import PostForm
 from blogs.models import Post, Blog
-from django.utils.translation import gettext as _
 
 
 def home(request):
@@ -61,29 +62,39 @@ def post_detail(request, username, post_id):
 
 class NewPostView(View):
     @method_decorator(login_required)
-    def get(self, request):
+    def get(self, request, pk=None):
         form = PostForm()
+        post = None
+        if pk is not None:
+            try:
+                post = Post.objects.get(pk=pk)
+            except Post.DoesNotExist:
+                print("Error al contestar al artículo con pk {0}".format(pk))
+                raise Http404
+            except Post.MultipleObjectsReturned:
+                print("Error al contestar al artículo con pk {0}".format(pk))
+                raise Http404
 
         context = {
-            "form": form
+            "form": form,
+            "post": post
         }
         return render(request, 'blogs/post_new.html', context)
 
     @method_decorator(login_required)
-    def post(self, request):
+    def post(self, request, pk=None):
         post = Post(blog=request.user.blog)
+
         form = PostForm(request.POST, instance=post)
 
         if form.is_valid():
-            post = form.save()
-
-            form = PostForm()
-
-            context = {
-                "post": post,
-                "form": form
-            }
-            return render(request, 'blogs/post_detail.html', context)
+            if pk is not None:
+                post.response = Post.objects.filter(pk=pk).first()
+            form.save()
+            send_email = self.need_send_email(post)
+            if send_email:
+                self.send_email_notification(post)
+            return redirect(home)
         else:
             message = _("blogs.views.error_create_post")
             context = {
@@ -92,3 +103,28 @@ class NewPostView(View):
                 "message": message
             }
             return render(request, 'blogs/post_new.html', context)
+
+    def need_send_email(self, post):
+        return post.body.find("@") is not -1 or post.response is not None
+
+    def send_email_notification(self, post):
+
+        username = None
+        body = None
+        if post.response is None:
+            # busco por @username
+            inicio_username = post.body.find("@")
+            fin_username = post.body.find(" ", inicio_username)
+            if fin_username is -1:
+                fin_username = len(post.body)
+            username = post.body[inicio_username + 1:fin_username]
+            body = "Has recibido una mención al artículo '{0}' del usuario '{1}'".format(post.title, username)
+        else:
+            # busco username al que se contesta el post
+            response = Post.objects.filter(pk=post.response.pk).first()
+            username = response.blog.user.username
+            body = "Has recibido una contestación en el artículo '{0}' del usuario '{1}'".format(post.title,
+                                                                                                 username)
+        user = User.objects.get(username=username)
+        email = user.email
+        Post.send_email.delay(email, body)

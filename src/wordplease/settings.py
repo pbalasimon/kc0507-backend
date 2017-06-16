@@ -148,3 +148,9 @@ LOGGING = {
 
 # Login URL
 LOGIN_URL = '/login'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'wordpleasekc@gmail.com'
+EMAIL_HOST_PASSWORD = 'keepcoding17'
+EMAIL_PORT = 587
